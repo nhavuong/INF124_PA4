@@ -53,12 +53,19 @@
                             System.out.println("my value" + ss);
                             Product p = ProductService.getProductById(Integer.parseInt(ss));
                              System.out.println("my product ID " + p.getId());
-                             System.out.println("my product name " + p.getName());
-
+                             System.out.println("my product name " + p.getName());                            
                         %>
-                        <a type="button" href="cart.jsp?id=1&quantity=10&name=blazer">Add to cart</a>
-                        <div class="grid left"></div>
-                        <div class="grid right"></div>
+                      
+                        <div class="grid left" align="left">
+                            <img src="picture/<%=p.getImgHref()%>" height="350" width="300" align="left">
+                        </div>
+                        <div class="grid right" align="right">
+                            <h4><%=p.getName()%></h4>
+                            <h5><%=p.getDescription()%></h5>
+                            <h5>$<%=p.getPrice()%></h5>
+                            
+                            <button type="button" onclick="location.href='cart.jsp?id=<%=ss%>&name=<%=p.getName()%>&price=<%=p.getPrice()%>&quantity=1'">Add to cart</button>               
+                        </div>
                     </div>
                 </div>                
             </section>

@@ -97,9 +97,9 @@
 
                                 }
                                 %>
-                                <td><img src="picture/<%=img%>" height="350" width="300">
+                                <td><a href="product.jsp?id=<%=i%>"><img src="picture/<%=img%>" height="350" width="300"></a>
                                     <br>
-                                    <a href="product.jsp?id=<%=i%>"><%=n%></a>
+                                    <a href="product.jsp?id=<%=i%>"><h3><%=n%></h3></a>
                                     <br><%=d%><br>$<%=p%>
                                 </td>
                                 <%

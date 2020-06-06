@@ -97,10 +97,15 @@ p{
 
 /* IMAGE */
 img {
-  width: 100%;
-  height: auto;
+  width: 300px;
+  height: 350px;
 }
 
+button{
+    color: #e74c3c;
+    background-color: azure;
+    font-size: 20px;
+}
 
 /* NAVBAR */
 nav {
