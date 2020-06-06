@@ -1,0 +1,20 @@
+package com.mycompany.inf124_pa4.resources;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
+
+/**
+ *
+ * @author 
+ */
+@Path("javaee8")
+public class JavaEE8Resource {
+    
+    @GET
+    public Response ping(){
+        return Response
+                .ok("ping")
+                .build();
+    }
+}
