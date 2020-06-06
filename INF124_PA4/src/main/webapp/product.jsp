@@ -56,6 +56,7 @@
                              System.out.println("my product name " + p.getName());
 
                         %>
+                        <a type="button" href="cart.jsp?id=1&quantity=10&name=blazer">Add to cart</a>
                         <div class="grid left"></div>
                         <div class="grid right"></div>
                     </div>

@@ -1,4 +1,6 @@
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="productrestservice.service.ProductService"%>
 <%@page import="productrestservice.model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -49,16 +51,41 @@
                 <div class="row">                    
                     <div class="product">
                         <% 
-                            String ss =request.getParameter("id");
-                            System.out.println("my value" + ss);
-                            Product p = ProductService.getProductById(Integer.parseInt(ss));
-                             System.out.println("my product ID " + p.getId());
-                             System.out.println("my product name " + p.getName());
-
+                            System.out.println(request.getParameter("id"));
+                            System.out.println(request.getParameter("name"));
+                            System.out.println(request.getParameter("quantity"));
+                            String productID = request.getParameter("id");
+                            String name = request.getParameter("name");
+                            String quantity = request.getParameter("quantity");
+                            
+                            List<String> productIdList = new ArrayList<String>();
+                            List<String> nameList = new ArrayList<String>();
+                            List<String> quantityList = new ArrayList<String>();
+                            if (session.getAttribute("idList") != null)
+                                productIdList = (List<String>)session.getAttribute("idList");
+                            if (session.getAttribute("quantityList") != null)
+                                quantityList = (List<String>)session.getAttribute("quantityList");
+                            if (session.getAttribute("nameList") != null)
+                                nameList = (List<String>)session.getAttribute("nameList");
+                            
+                            productIdList.add(productID);
+                            quantityList.add(quantity);
+                            nameList.add(name);
+                            
+                            session.setAttribute("idList", productIdList);
+                            session.setAttribute("quantityList", quantityList);
+                            session.setAttribute("nameList", nameList);
+                            
+                            System.out.println(productIdList);
+                            System.out.println(quantityList);
+                            System.out.println(nameList);
                         %>
-                        <a type="button" href="cart.jsp?id=1&quantity=10&name=blazer">Add to cart</a>
-                        <div class="grid left"></div>
-                        <div class="grid right"></div>
+                        <h2>CART INFORMATION</h2>
+                        <br>
+                        <h4>You've added <%=quantity%> <%=name%> to the cart.</h4>
+                        <br>
+                        <button onclick="javascript:window.location='home.jsp';"> Continue Shopping </button>
+                        <button onclick="javascript:window.location='form.jsp';"> Check Out </button>
                     </div>
                 </div>                
             </section>
@@ -99,8 +126,6 @@
 
         <!-- JAVASCRIPT-->
         <script src="js/main.js"></script>
-        <script src="js/product.js"></script>
-
     </body>
 </html>
         
