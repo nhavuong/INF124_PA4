@@ -1,4 +1,8 @@
 
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -60,9 +64,53 @@
 
 
                     <!-- Product List -->
-                    <div class="card" >
-                        <div class="row" id="listOfItem"></div>
-                    </div>
+                    <table align="center" style="text-align: center" border="0px" cellspacing="3px" cellpadding="10px">
+                    <%
+                        try{
+                            String URL = "jdbc:mysql://localhost:3307/jnah_shop";
+                            String USER = "root";
+                            String PASSWORD = "";
+
+                            Class.forName("com.mysql.jdbc.Driver");
+
+                            Connection dbcon = DriverManager.getConnection(URL, USER, PASSWORD);
+                            String query = "select * from cloth";
+                            Statement stmt = dbcon.createStatement();
+                            ResultSet rs = stmt.executeQuery(query);
+
+                            int cnt=0;
+
+                            while(rs.next())
+                            {
+                                String i,n,d,img, p, q;
+                                i = rs.getString("id").trim();
+                                n = rs.getString("name").trim();
+                                d = rs.getString("description").trim();
+                                img = rs.getString("imgHref").trim();
+                                p = rs.getString("price").trim();
+                                q = rs.getString("quantity").trim();
+
+                                if(cnt==3)
+                                {
+                                    out.print("</tr><tr>");
+                                    cnt=0;
+
+                                }
+                                %>
+                                <td><img src="picture/<%=img%>" height="350" width="300">
+                                    <br>
+                                    <a href="product.jsp?id=<%=i%>"><%=n%></a>
+                                    <br><%=d%><br>$<%=p%>
+                                </td>
+                                <%
+                                    cnt++;
+                            }
+                        }
+                        catch(Exception e){
+                            out.println(e);
+                        }
+                    %>
+                </table>
                 </div>
             </section>
 
@@ -179,7 +227,6 @@
 
         <!-- JavaScript -->
         <script src="https://kit.fontawesome.com/3a7f96f49f.js" crossorigin="anonymous"></script>
-        <script src="js/home.js"></script>
         <script src="js/main.js"></script>
 
     </body>

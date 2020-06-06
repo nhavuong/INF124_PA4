@@ -1,4 +1,6 @@
 
+<%@page import="productrestservice.service.ProductService"%>
+<%@page import="productrestservice.model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -46,6 +48,14 @@
             <section class="wrapper">                
                 <div class="row">                    
                     <div class="product">
+                        <% 
+                            String ss =request.getParameter("id");
+                            System.out.println("my value" + ss);
+                            Product p = ProductService.getProductById(Integer.parseInt(ss));
+                             System.out.println("my product ID " + p.getId());
+                             System.out.println("my product name " + p.getName());
+
+                        %>
                         <div class="grid left"></div>
                         <div class="grid right"></div>
                     </div>
