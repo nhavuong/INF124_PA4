@@ -52,8 +52,8 @@
                             String ss =request.getParameter("id");
                             System.out.println("my value" + ss);
                             Product p = ProductService.getProductById(Integer.parseInt(ss));
-                             System.out.println("my product ID " + p.getId());
-                             System.out.println("my product name " + p.getName());                            
+                            System.out.println("my product ID " + p.getId());
+                            System.out.println("my product name " + p.getName());    
                         %>
                       
                         <div class="grid left" align="left">
@@ -63,8 +63,14 @@
                             <h4><%=p.getName()%></h4>
                             <h5><%=p.getDescription()%></h5>
                             <h5>$<%=p.getPrice()%></h5>
-                            
-                            <button type="button" onclick="location.href='cart.jsp?id=<%=ss%>&name=<%=p.getName()%>&price=<%=p.getPrice()%>&quantity=1'">Add to cart</button>               
+                            <form action="cart.jsp" method="GET">
+                                <input type ="hidden" name ="name" value="<%=p.getName()%>"/>
+                                <input type ="hidden" name ="id" value="<%=ss%>"/>
+                                <label for="quantity">Quantity</label>
+                                <input type ="number" name ="quantity"/>
+                                <input type="submit" value="Submit" />
+                            </form>
+                                 
                         </div>
                     </div>
                 </div>                

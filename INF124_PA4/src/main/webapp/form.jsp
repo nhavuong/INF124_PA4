@@ -1,5 +1,9 @@
 
 
+<%@page import="productrestservice.service.ProductService"%>
+<%@page import="productrestservice.model.Product"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -48,10 +52,23 @@
                     <div class="card col-12" id="sumary">
                         <div class="card-title">
                             <h2>Sumary</h2>
-                            <img id="productImage"></img>
                             <p><strong>Items added: </strong><span id="itemName"></span></p>
-                            <p><strong>Quantity: </strong><span id="itemQuantity"></span></p>
-                            <p><strong>Price: </strong><span id="itemPrice"></span></p>
+                            <% 
+                                List<String> productIdList = new ArrayList<String>();
+                                List<String> nameList = new ArrayList<String>();
+                                List<String> quantityList = new ArrayList<String>();
+                                productIdList = (List<String>)session.getAttribute("idList");
+                                quantityList = (List<String>)session.getAttribute("quantityList");
+                                nameList = (List<String>)session.getAttribute("nameList");
+                                System.out.println(productIdList);
+                                System.out.println(quantityList);
+                                System.out.println(nameList);
+                                for (int i = 0; i < nameList.size(); i++) {
+                                    Product p = ProductService.getProductById(Integer.parseInt(productIdList.get(i)));
+                            %>
+                                    <p><%=i+1%>/<%=p.getName()%> ($<%=p.getPrice()%>)-------- <%=quantityList.get(i)%> items </p>
+                            <%    };
+                            %>
                             <p><strong>Shipping: </strong><span id="shippingMethod"></span></p>
                             <p><strong>Tax: </strong><span id="tax"></span></p>
                             <p><strong>Total: </strong><span id="total"></span></p>
