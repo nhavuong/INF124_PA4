@@ -24,22 +24,22 @@
                     </div>
 
                     <ul class="nav-menu" style="list-style-type:none;" id="navbar">
-                        <li><a href="home.html">Home</a></li>
-                        <li><a href="home.html#products">Products</a></li>
-                        <li><a href="form.html">Order</a></li>
-                        <li><a href="home.html#about-us">About Us</a></li>
-                        <li><a href="home.html#contact-us">Contact Us</a></li>
+                        <li><a href="home.jsp">Home</a></li>
+                        <li><a href="home.jsp#products">Products</a></li>
+                        <li><a href="cart.jsp">Order</a></li>
+                        <li><a href="home.jsp#about-us">About Us</a></li>
+                        <li><a href="home.jsp#contact-us">Contact Us</a></li>
                         <li> <a href="javascript:void(0);" class="nav-icon" onclick="navbar()">
                             <i class="fa fa-bars"></i> </a></li>
                     </ul>
                 </div>
             </div>
             <div id="toggle" class="toggle-menu" style="list-style-type:none;">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="home.html#products">Products</a></li>
-                <li><a href="form.html">Order</a></li>
-                <li><a href="home.html#about-us">About Us</a></li>
-                <li><a href="home.html#contact-us">Contact Us</a></li>
+                <li><a href="home.jsp">Home</a></li>
+                <li><a href="home.jsp#products">Products</a></li>
+                <li><a href="cart.jsp">Order</a></li>
+                <li><a href="home.jsp#about-us">About Us</a></li>
+                <li><a href="home.jsp#contact-us">Contact Us</a></li>
             </div>
         </nav>
         
@@ -60,7 +60,7 @@
                             <img src="picture/<%=p.getImgHref()%>" height="350" width="300" align="left">
                         </div>
                         <div class="grid right" align="right">
-                            <h4><%=p.getName()%></h4>
+                            <h3 style="color:#CE4760"><%=p.getName()%></h3>
                             <h5><%=p.getDescription()%></h5>
                             <h5>$<%=p.getPrice()%></h5>
                             <form action="cart.jsp" method="GET">
@@ -68,7 +68,7 @@
                                 <input type ="hidden" name ="id" value="<%=ss%>"/>
                                 <label for="quantity">Quantity</label>
                                 <input type ="number" name ="quantity"/>
-                                <input type="submit" value="Submit" />
+                                <h4><input style="color:#dddddd; background-color:#d9455f; font-size:20px" type="submit" value="Add to cart" /></h4>
                             </form>
                                  
                         </div>

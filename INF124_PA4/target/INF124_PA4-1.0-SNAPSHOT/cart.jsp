@@ -26,29 +26,29 @@
                     </div>
 
                     <ul class="nav-menu" style="list-style-type:none;" id="navbar">
-                        <li><a href="home.html">Home</a></li>
-                        <li><a href="home.html#products">Products</a></li>
-                        <li><a href="form.html">Order</a></li>
-                        <li><a href="home.html#about-us">About Us</a></li>
-                        <li><a href="home.html#contact-us">Contact Us</a></li>
+                        <li><a href="home.jsp">Home</a></li>
+                        <li><a href="home.jsp#products">Products</a></li>
+                        <li><a href="cart.jsp">Order</a></li>
+                        <li><a href="home.jsp#about-us">About Us</a></li>
+                        <li><a href="home.jsp#contact-us">Contact Us</a></li>
                         <li> <a href="javascript:void(0);" class="nav-icon" onclick="navbar()">
                             <i class="fa fa-bars"></i> </a></li>
                     </ul>
                 </div>
             </div>
             <div id="toggle" class="toggle-menu" style="list-style-type:none;">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="home.html#products">Products</a></li>
-                <li><a href="form.html">Order</a></li>
-                <li><a href="home.html#about-us">About Us</a></li>
-                <li><a href="home.html#contact-us">Contact Us</a></li>
+                <li><a href="home.jsp">Home</a></li>
+                <li><a href="home.jsp#products">Products</a></li>
+                <li><a href="cart.jsp">Order</a></li>
+                <li><a href="home.jsp#about-us">About Us</a></li>
+                <li><a href="home.jsp#contact-us">Contact Us</a></li>
             </div>
         </nav>
         
         <!-- PRODUCTS DETAIL -->
         <div class="container">
-            <section class="wrapper">                
-                <div class="row">                    
+            <section class="wrapper">  
+                <div class="row">   
                     <div class="product">
                         <% 
                             System.out.println(request.getParameter("id"));
@@ -79,13 +79,28 @@
                             System.out.println(productIdList);
                             System.out.println(quantityList);
                             System.out.println(nameList);
+                            
+                            Product p = ProductService.getProductById(Integer.parseInt(productID));
                         %>
-                        <h2>CART INFORMATION</h2>
+                        
+                        <div style="text-align: center">
+                            <h2>CART INFORMATION</h2>
+                            <h4>Here is what you've just added!</h4>
+                        </div>
+                        <div>
+                            <h4>You've added <%=quantity%> <strong><%=name%></strong> to the cart.</h4>
+                                <img src="picture/<%=p.getImgHref()%>" height="370" width="320">
+                                <br>
+                                <h4><button onclick="javascript:window.location='home.jsp#products';" style="color:#dddddd; background-color:#f57b51; font-size:25px"> Continue Shopping </button>
+                                    <button onclick="javascript:window.location='form.jsp';" style="color:#dddddd; background-color:#d9455f; font-size:25px"> Check Out </button></h4>
+                        </div>
+<!--                     
+<!--                        <h2 style="text-align: center">CART INFORMATION</h2>
                         <br>
                         <h4>You've added <%=quantity%> <%=name%> to the cart.</h4>
                         <br>
-                        <button onclick="javascript:window.location='home.jsp';"> Continue Shopping </button>
-                        <button onclick="javascript:window.location='form.jsp';"> Check Out </button>
+                        <button onclick="javascript:window.location='home.jsp#products';"> Continue Shopping </button>
+                        <button onclick="javascript:window.location='form.jsp';"> Check Out </button>-->
                     </div>
                 </div>                
             </section>

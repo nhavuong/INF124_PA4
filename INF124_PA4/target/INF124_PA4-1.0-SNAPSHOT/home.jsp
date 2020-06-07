@@ -29,7 +29,7 @@
                     <ul class="nav-menu" style="list-style-type:none;" id="navbar">
                         <li><a href="#">Home</a></li>
                         <li><a href="#products">Products</a></li>
-                        <li><a href="form.html">Order</a></li>
+                        <li><a href="cart.jsp">Order</a></li>
                         <li><a href="#about-us">About Us</a></li>
                         <li><a href="#contact-us">Contact Us</a></li>
                         <li> <a href="javascript:void(0);" class="nav-icon" onclick="navbar()">
@@ -40,7 +40,7 @@
             <div id="toggle" class="toggle-menu" style="list-style-type:none;">
                 <li><a href="#">Home</a></li>
                 <li><a href="#products">Products</a></li>
-                <li><a href="form.html">Order</a></li>
+                <li><a href="cart.jsp">Order</a></li>
                 <li><a href="#about-us">About Us</a></li>
                 <li><a href="#contact-us">Contact Us</a></li>
             </div>
@@ -99,7 +99,7 @@
                                 %>
                                 <td><a href="product.jsp?id=<%=i%>"><img src="picture/<%=img%>" height="350" width="300"></a>
                                     <br>
-                                    <a href="product.jsp?id=<%=i%>"><h3><%=n%></h3></a>
+                                    <a href="product.jsp?id=<%=i%>" style="color:#ce4760"><h3><%=n%></h3></a>
                                     <br><%=d%><br>$<%=p%>
                                 </td>
                                 <%
