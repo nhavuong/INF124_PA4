@@ -28,7 +28,21 @@
                     <ul class="nav-menu" style="list-style-type:none;" id="navbar">
                         <li><a href="home.jsp">Home</a></li>
                         <li><a href="home.jsp#products">Products</a></li>
-                        <li><a href="cart.jsp">Order</a></li>
+                        <% 
+                            List<String> quantityList = new ArrayList<String>();
+                            if (session.getAttribute("nameList") != null){
+                                quantityList = (List<String>)session.getAttribute("quantityList");
+                                int total = 0;
+                                for (int i = 0; i < quantityList.size(); i++) {
+                                    total += Integer.parseInt(quantityList.get(i));
+                                }
+                        %>
+                        <li><a href="form.jsp">Cart <sup>+<%=total%></sup></a></li>
+                        <%    } else {
+                        %>
+                            <li><a href="form.jsp">Cart</a></li>
+                        <%    };
+                        %>
                         <li><a href="home.jsp#about-us">About Us</a></li>
                         <li><a href="home.jsp#contact-us">Contact Us</a></li>
                         <li> <a href="javascript:void(0);" class="nav-icon" onclick="navbar()">
@@ -60,7 +74,6 @@
                             
                             List<String> productIdList = new ArrayList<String>();
                             List<String> nameList = new ArrayList<String>();
-                            List<String> quantityList = new ArrayList<String>();
                             if (session.getAttribute("idList") != null)
                                 productIdList = (List<String>)session.getAttribute("idList");
                             if (session.getAttribute("quantityList") != null)
@@ -94,13 +107,6 @@
                                 <h4><button onclick="javascript:window.location='home.jsp#products';" style="color:#dddddd; background-color:#f57b51; font-size:25px"> Continue Shopping </button>
                                     <button onclick="javascript:window.location='form.jsp';" style="color:#dddddd; background-color:#d9455f; font-size:25px"> Check Out </button></h4>
                         </div>
-<!--                     
-<!--                        <h2 style="text-align: center">CART INFORMATION</h2>
-                        <br>
-                        <h4>You've added <%=quantity%> <%=name%> to the cart.</h4>
-                        <br>
-                        <button onclick="javascript:window.location='home.jsp#products';"> Continue Shopping </button>
-                        <button onclick="javascript:window.location='form.jsp';"> Check Out </button>-->
                     </div>
                 </div>                
             </section>

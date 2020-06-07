@@ -27,22 +27,36 @@
                     </div>
 
                     <ul class="nav-menu" style="list-style-type:none;" id="navbar">
-                        <li><a href="home.html">Home</a></li>
-                        <li><a href="home.html#products">Products</a></li>
-                        <li><a href="form.html">Order</a></li>
-                        <li><a href="home.html#about-us">About Us</a></li>
-                        <li><a href="home.html#contact-us">Contact Us</a></li>
+                        <li><a href="home.jsp">Home</a></li>
+                        <li><a href="home.jsp#products">Products</a></li>
+                        <% 
+                            List<String> quantityList = new ArrayList<String>();
+                            if (session.getAttribute("nameList") != null){
+                                quantityList = (List<String>)session.getAttribute("quantityList");
+                                int total = 0;
+                                for (int i = 0; i < quantityList.size(); i++) {
+                                    total += Integer.parseInt(quantityList.get(i));
+                                }
+                        %>
+                        <li><a href="form.jsp">Cart <sup>+<%=total%></sup></a></li>
+                        <%    } else {
+                        %>
+                            <li><a href="form.jsp">Cart</a></li>
+                        <%    };
+                        %>
+                        <li><a href="home.jsp#about-us">About Us</a></li>
+                        <li><a href="home.jsp#contact-us">Contact Us</a></li>
                         <li> <a href="javascript:void(0);" class="nav-icon" onclick="navbar()">
                             <i class="fa fa-bars"></i> </a></li>
                     </ul>
                 </div>
             </div>
             <div id="toggle" class="toggle-menu" style="list-style-type:none;">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="home.html#products">Products</a></li>
-                <li><a href="form.html">Order</a></li>
-                <li><a href="home.html#about-us">About Us</a></li>
-                <li><a href="home.html#contact-us">Contact Us</a></li>
+                <li><a href="home.jsp">Home</a></li>
+                <li><a href="home.jsp#products">Products</a></li>
+                <li><a href="cart.jsp">Order</a></li>
+                <li><a href="home.jsp#about-us">About Us</a></li>
+                <li><a href="home.jsp#contact-us">Contact Us</a></li>
             </div>
         </nav>
 
@@ -56,13 +70,9 @@
                             <% 
                                 List<String> productIdList = new ArrayList<String>();
                                 List<String> nameList = new ArrayList<String>();
-                                List<String> quantityList = new ArrayList<String>();
                                 productIdList = (List<String>)session.getAttribute("idList");
                                 quantityList = (List<String>)session.getAttribute("quantityList");
                                 nameList = (List<String>)session.getAttribute("nameList");
-                                System.out.println(productIdList);
-                                System.out.println(quantityList);
-                                System.out.println(nameList);
                                 for (int i = 0; i < nameList.size(); i++) {
                                     Product p = ProductService.getProductById(Integer.parseInt(productIdList.get(i)));
                             %>

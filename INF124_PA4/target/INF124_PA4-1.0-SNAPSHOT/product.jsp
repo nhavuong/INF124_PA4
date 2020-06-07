@@ -1,4 +1,6 @@
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="productrestservice.service.ProductService"%>
 <%@page import="productrestservice.model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -26,7 +28,21 @@
                     <ul class="nav-menu" style="list-style-type:none;" id="navbar">
                         <li><a href="home.jsp">Home</a></li>
                         <li><a href="home.jsp#products">Products</a></li>
-                        <li><a href="cart.jsp">Order</a></li>
+                        <% 
+                            List<String> quantityList = new ArrayList<String>();
+                            if (session.getAttribute("nameList") != null){
+                                quantityList = (List<String>)session.getAttribute("quantityList");
+                                int total = 0;
+                                for (int i = 0; i < quantityList.size(); i++) {
+                                    total += Integer.parseInt(quantityList.get(i));
+                                }
+                        %>
+                        <li><a href="form.jsp">Cart <sup>+<%=total%></sup></a></li>
+                        <%    } else {
+                        %>
+                            <li><a href="form.jsp">Cart</a></li>
+                        <%    };
+                        %>
                         <li><a href="home.jsp#about-us">About Us</a></li>
                         <li><a href="home.jsp#contact-us">Contact Us</a></li>
                         <li> <a href="javascript:void(0);" class="nav-icon" onclick="navbar()">

@@ -14,7 +14,7 @@
     </head>
     <body>
         <!-- NAVBAR -->
-        <nav id="main-nav">
+         <nav id="main-nav">
             <div class="row">
                 <div class="container">
                     <div class="logo">
@@ -22,24 +22,25 @@
                     </div>
 
                     <ul class="nav-menu" style="list-style-type:none;" id="navbar">
-                        <li><a href="home.html">Home</a></li>
-                        <li><a href="home.html#products">Products</a></li>
-                        <li><a href="form.html">Order</a></li>
-                        <li><a href="home.html#about-us">About Us</a></li>
-                        <li><a href="home.html#contact-us">Contact Us</a></li>
+                        <li><a href="home.jsp">Home</a></li>
+                        <li><a href="home.jsp#products">Products</a></li>
+                        <li><a href="form.jsp">Order</a></li>
+                        <li><a href="home.jsp#about-us">About Us</a></li>
+                        <li><a href="home.jsp#contact-us">Contact Us</a></li>
                         <li> <a href="javascript:void(0);" class="nav-icon" onclick="navbar()">
                             <i class="fa fa-bars"></i> </a></li>
                     </ul>
                 </div>
             </div>
             <div id="toggle" class="toggle-menu" style="list-style-type:none;">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="home.html#products">Products</a></li>
-                <li><a href="form.html">Order</a></li>
-                <li><a href="home.html#about-us">About Us</a></li>
-                <li><a href="home.html#contact-us">Contact Us</a></li>
+                <li><a href="home.jsp">Home</a></li>
+                <li><a href="home.jsp#products">Products</a></li>
+                <li><a href="cart.jsp">Order</a></li>
+                <li><a href="home.jsp#about-us">About Us</a></li>
+                <li><a href="home.jsp#contact-us">Contact Us</a></li>
             </div>
         </nav>
+
         
         <!-- PRODUCTS DETAIL -->
         <div class="container">
